@@ -24,14 +24,13 @@
     
 }
 - (IBAction)btn:(id)sender {
-      [[XDTCPManager sharedInstance] connectToServers];
-    for (int i=0; i<1000; i++) {
         NSData *da=[@"123hjdsgfsdgfjdsfgjlasgdfjdsgafhgdsakfgsadljfgsjkfghjkasgdfkhjasgfkhgdsafjhkgdsahjkfgdsahjkfgashjkgfksagjfgdsjgfjhksgfagskjfg" dataUsingEncoding:NSUTF8StringEncoding];
         [XDTCPManager requestWith:da successBlock:^(id response) {
-            NSLog(@"请求成功%@%zd",response,i);
+            NSData *res=response;
+            NSString *dd=[[NSString alloc]initWithData:res encoding:NSUTF8StringEncoding];;
+            NSLog(@"请求成功%@",dd );
         } failureBlock:^{
             NSLog(@"请求失败");
         }];
-    }
 }
 @end

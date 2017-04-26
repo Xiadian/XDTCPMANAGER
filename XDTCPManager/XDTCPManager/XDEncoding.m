@@ -38,21 +38,6 @@
     NSUInteger Code=requestPacket.packetHead.pid;
     NSData *codeData=[XDSocketUtils bytesFromValue:Code byteCount:2 reverse:NO];
     [headData appendData:codeData];
-    //优先级
-    NSUInteger priority=1000;
-    requestPacket.packetHead.priority=priority;
-    NSData *priorityData=[XDSocketUtils bytesFromValue:requestPacket.packetHead.priority byteCount:2 reverse:NO];
-    [headData appendData:priorityData];
-    //验证码
-    NSUInteger verifyCode=124124;
-    requestPacket.packetHead.verifyCode=verifyCode;
-    NSData *verifyCodeData=[XDSocketUtils bytesFromValue:verifyCode byteCount:8 reverse:NO];
-    [headData appendData:verifyCodeData];
-    //优先级
-    NSUInteger unkown=444;
-    requestPacket.packetHead.unkown=unkown;
-    NSData *unkownData=[XDSocketUtils bytesFromValue:requestPacket.packetHead.unkown byteCount:4 reverse:NO];
-    [headData appendData:unkownData];
     [sendData appendData:headData];
     [sendData appendData:data];
     

@@ -80,8 +80,6 @@
 @interface XDSocketPacketHead : XDSocketPacketContext
 @property(nonatomic,assign)NSUInteger length; //数据长度4
 @property (nonatomic, assign) NSInteger pid;//验证码
-@property(nonatomic,assign)NSUInteger priority; //优先级2
-@property(nonatomic,assign)NSUInteger verifyCode; //验证码8
-@property(nonatomic,assign)NSUInteger unkown;//未定4
+
 @end
 

@@ -11,7 +11,7 @@
 #import "XDTCPConnect.h"
 @interface XDEncoding : NSObject
 /**
- *  应用协议中允许发送的最大数据块大小，默认为2147483647
+ *  应用协议中允许发送的最大数据块大小
  */
 @property (nonatomic, assign) NSUInteger maxFrameSize;
 /**
