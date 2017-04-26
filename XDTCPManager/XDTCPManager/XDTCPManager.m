@@ -37,7 +37,6 @@
 }
 #pragma mark 连接服务器
 -(void)connectToServers{
-    
     [self.Instrument.con connectToService];
 }
 +(void)requestWith:(NSData *)requestData successBlock:(succesReqBlock)succesBlock failureBlock:(failureReqBlock)failureBlock{
@@ -114,7 +113,7 @@
  */
 -(void)stopServers{
     
-    [self .Instrument stopService];
+    [self.Instrument stopService];
 }
 /**
  缓存被移除代理方法

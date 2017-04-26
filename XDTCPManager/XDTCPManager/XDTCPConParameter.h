@@ -26,4 +26,8 @@
  链接时间默认-1
  */
 @property(nonatomic,assign)NSInteger timeOut;
+/**
+ 是否开启心跳
+ */
+@property(nonatomic,assign)BOOL heartIsOn;
 @end

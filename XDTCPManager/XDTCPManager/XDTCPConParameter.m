@@ -16,6 +16,7 @@
         self.host=HOST;
         self.port=PORT;
         self.timeOut=TIMEOUT;
+        self.heartIsOn=YES;
     }
     return self;
 }

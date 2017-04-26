@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47003BA91EB06A510086EFB4 /* XDHeartBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 47003BA81EB06A510086EFB4 /* XDHeartBeat.m */; };
 		4736F4551E9CC8250081C30E /* XDSocketUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736F4541E9CC8250081C30E /* XDSocketUtils.m */; };
 		54411ABB1E8E239600F52B56 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 54411ABA1E8E239600F52B56 /* GCDAsyncSocket.m */; };
 		54411ABE1E8E23C300F52B56 /* XDTCPConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 54411ABD1E8E23C300F52B56 /* XDTCPConnect.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47003BA71EB06A510086EFB4 /* XDHeartBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDHeartBeat.h; sourceTree = "<group>"; };
+		47003BA81EB06A510086EFB4 /* XDHeartBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDHeartBeat.m; sourceTree = "<group>"; };
 		4736F4531E9CC8250081C30E /* XDSocketUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSocketUtils.h; sourceTree = "<group>"; };
 		4736F4541E9CC8250081C30E /* XDSocketUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSocketUtils.m; sourceTree = "<group>"; };
 		54411AB91E8E239600F52B56 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
@@ -69,18 +72,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		54411AB81E8E236F00F52B56 /* TCPManager */ = {
+		47003BA61EB069E80086EFB4 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				54411AB91E8E239600F52B56 /* GCDAsyncSocket.h */,
-				54411ABA1E8E239600F52B56 /* GCDAsyncSocket.m */,
-				54411AC51E8E2C9A00F52B56 /* Manager */,
+				47003BA71EB06A510086EFB4 /* XDHeartBeat.h */,
+				47003BA81EB06A510086EFB4 /* XDHeartBeat.m */,
 				54411ABC1E8E23C300F52B56 /* XDTCPConnect.h */,
 				54411ABD1E8E23C300F52B56 /* XDTCPConnect.m */,
 				54411ABF1E8E289E00F52B56 /* XDTCPConParameter.h */,
 				54411AC01E8E289E00F52B56 /* XDTCPConParameter.m */,
 				54411ACC1E8E4BF100F52B56 /* XDTCPInstrument.h */,
 				54411ACD1E8E4BF100F52B56 /* XDTCPInstrument.m */,
+				54411AC91E8E2D0300F52B56 /* XDTCPRequest.h */,
+				54411ACA1E8E2D0300F52B56 /* XDTCPRequest.m */,
+				54411AD61E8F422B00F52B56 /* XDSocketPacketContext.h */,
+				54411AD71E8F422B00F52B56 /* XDSocketPacketContext.m */,
+				4736F4531E9CC8250081C30E /* XDSocketUtils.h */,
+				4736F4541E9CC8250081C30E /* XDSocketUtils.m */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		54411AB81E8E236F00F52B56 /* TCPManager */ = {
+			isa = PBXGroup;
+			children = (
+				54411AB91E8E239600F52B56 /* GCDAsyncSocket.h */,
+				54411ABA1E8E239600F52B56 /* GCDAsyncSocket.m */,
+				54411AC51E8E2C9A00F52B56 /* Manager */,
 			);
 			name = TCPManager;
 			sourceTree = "<group>";
@@ -88,15 +106,10 @@
 		54411AC51E8E2C9A00F52B56 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				47003BA61EB069E80086EFB4 /* Class */,
 				54411ACF1E8E51C500F52B56 /* Coding */,
 				54411AC61E8E2CBB00F52B56 /* XDTCPManager.h */,
 				54411AC71E8E2CBB00F52B56 /* XDTCPManager.m */,
-				54411AC91E8E2D0300F52B56 /* XDTCPRequest.h */,
-				54411ACA1E8E2D0300F52B56 /* XDTCPRequest.m */,
-				54411AD61E8F422B00F52B56 /* XDSocketPacketContext.h */,
-				54411AD71E8F422B00F52B56 /* XDSocketPacketContext.m */,
-				4736F4531E9CC8250081C30E /* XDSocketUtils.h */,
-				4736F4541E9CC8250081C30E /* XDSocketUtils.m */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -234,6 +247,7 @@
 				54411ABE1E8E23C300F52B56 /* XDTCPConnect.m in Sources */,
 				54411ACB1E8E2D0300F52B56 /* XDTCPRequest.m in Sources */,
 				544D55BB1E8B915A00E073F5 /* AppDelegate.m in Sources */,
+				47003BA91EB06A510086EFB4 /* XDHeartBeat.m in Sources */,
 				54411ACE1E8E4BF100F52B56 /* XDTCPInstrument.m in Sources */,
 				54411AD21E8E520400F52B56 /* XDEncoding.m in Sources */,
 				544D55B81E8B915A00E073F5 /* main.m in Sources */,

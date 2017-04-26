@@ -9,12 +9,15 @@
 #import "XDTCPConnect.h"
 #import "XDTCPConParameter.h"
 #import "GCDAsyncSocket.h"
+#import "XDHeartBeat.h"
 NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
 @interface XDTCPConnect () <GCDAsyncSocketDelegate>
 
 @property (nonatomic, strong) GCDAsyncSocket *asyncSocket;
 @property (nonatomic, assign) void *IsOnSocketQueueOrTargetQueueKey;
 @property (nonatomic, strong) XDTCPConParameter *parameter;
+@property (nonatomic, strong) XDHeartBeat *heartBeat;
+
 @end
 @implementation XDTCPConnect
 - (instancetype)init
@@ -31,6 +34,7 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
         self.asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:self.socketSendQueue];
         
         self.parameter=[[XDTCPConParameter alloc]init];
+        self.heartBeat=[[XDHeartBeat alloc]init];
     }
     return self;
 }
@@ -72,7 +76,7 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
     if ([self isConnect]) {
         
         [self.asyncSocket disconnect];
-        
+        [self.heartBeat.heartTimer  setFireDate:[NSDate distantFuture]];
         self.asyncSocket.delegate=nil;
     }
 }
@@ -81,16 +85,18 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
     NSLog(@"socketDidDisconnect: %@", err.description);
-    
     if (self.delegate) {
-        
+        [self.heartBeat.heartTimer  setFireDate:[NSDate distantFuture]];
         [self.delegate didDisconnect:self withError:err];
     }
 }
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"didConnectToHost: %@, port: %d", host, port);
-    
+    if (self.parameter.heartIsOn) {
+        //开启定时器
+        [self.heartBeat.heartTimer  setFireDate:[NSDate distantPast]];
+    }
     if (self.delegate) {
         
         [self.delegate didConnect:self toHost:host port:port];
@@ -109,7 +115,7 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
 }
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-    NSLog(@"didWriteDataWithTag: %ld", tag);
+    //NSLog(@"didWriteDataWithTag: %ld", tag);
     
     [sock readDataWithTimeout:self.parameter.timeOut tag:tag];
 }

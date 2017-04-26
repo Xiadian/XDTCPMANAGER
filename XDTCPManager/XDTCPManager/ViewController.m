@@ -24,6 +24,7 @@
     
 }
 - (IBAction)btn:(id)sender {
+     [[XDTCPManager sharedInstance] connectToServers];
         NSData *da=[@"123hjdsgfsdgfjdsfgjlasgdfjdsgafhgdsakfgsadljfgsjkfghjkasgdfkhjasgfkhgdsafjhkgdsahjkfgdsahjkfgashjkgfksagjfgdsjgfjhksgfagskjfg" dataUsingEncoding:NSUTF8StringEncoding];
         [XDTCPManager requestWith:da successBlock:^(id response) {
             NSData *res=response;
