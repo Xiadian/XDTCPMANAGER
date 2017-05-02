@@ -43,7 +43,7 @@
     
     //判断是否是连接状态
     if ([XDTCPManager sharedInstance].Instrument.isRunning) {
-        
+
         XDTCPRequest *rst=[[XDTCPRequest alloc]init];
         
         rst.succesReqBlock=succesBlock;

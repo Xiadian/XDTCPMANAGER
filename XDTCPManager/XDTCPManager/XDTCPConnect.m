@@ -76,7 +76,7 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
     if ([self isConnect]) {
         
         [self.asyncSocket disconnect];
-        [self.heartBeat.heartTimer  setFireDate:[NSDate distantFuture]];
+        [self.heartBeat timerPause];
         self.asyncSocket.delegate=nil;
     }
 }
@@ -86,7 +86,7 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
 {
     NSLog(@"socketDidDisconnect: %@", err.description);
     if (self.delegate) {
-        [self.heartBeat.heartTimer  setFireDate:[NSDate distantFuture]];
+        [self.heartBeat timerContinue];
         [self.delegate didDisconnect:self withError:err];
     }
 }
@@ -95,7 +95,7 @@ NSString * const RSSocketQueueSpecific = @"com.XDsocket.XDSocketQueueSpecific";
     NSLog(@"didConnectToHost: %@, port: %d", host, port);
     if (self.parameter.heartIsOn) {
         //开启定时器
-        [self.heartBeat.heartTimer  setFireDate:[NSDate distantPast]];
+      
     }
     if (self.delegate) {
         

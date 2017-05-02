@@ -18,4 +18,13 @@
  */
 @property(nonatomic,retain)NSTimer *heartTimer;
 
+/**
+ 定时器暂停
+ */
+-(void)timerPause;
+
+/**
+ 定时器继续 开始
+ */
+-(void)timerContinue;
 @end

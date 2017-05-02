@@ -35,4 +35,12 @@
         NSLog(@"心跳发送失败");
     }];
 }
+-(void)timerPause{
+    
+  [self.heartTimer  setFireDate:[NSDate distantFuture]];
+}
+-(void)timerContinue{
+    
+  [self.heartTimer  setFireDate:[NSDate distantPast]];
+}
 @end
